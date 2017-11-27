@@ -13,7 +13,7 @@
 	
 	
 		Alien a = (Alien)request.getAttribute("alien");
-		out.println(a);
+		out.println(a.toString());
 	%>
 
 </body>
