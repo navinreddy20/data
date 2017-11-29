@@ -1,7 +1,12 @@
 package com.telusko.dao;
 
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.telusko.model.Alien;
 
@@ -9,7 +14,7 @@ public class AlienDAO
 {
 	String url = "jdbc:mysql://localhost:3306/datajava";
 	String username = "root";
-	String password = "0";
+	String password = "root";
 	Connection con;
 	
 	public AlienDAO() {
@@ -52,10 +57,13 @@ public class AlienDAO
 	public void save(Alien a) {
 		
 		try {
-			Statement st = con.createStatement();
+			String sql = "insert into alien  values (?,?,?)";
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, a.getAid());
+			st.setString(2, a.getAname());
+			st.setString(3, a.getTech());
 			
-			String sql = "insert into alien values (" + a.getAid() + ",'" + a.getAname() + "','" + a.getTech() + "')";
-			st.executeUpdate(sql);
+			int i = st.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,4 +72,41 @@ public class AlienDAO
 		
 		
 	}
+
+	public List<Alien> getAliens() {
+		
+		List<Alien> aliens = new ArrayList<>();
+		
+		try
+		{
+			String sql = "select * from alien";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next())
+			{
+				Alien a = new Alien();
+				a.setAid(rs.getInt("aid"));
+				a.setAname(rs.getString("aname"));
+				a.setTech(rs.getString("tech"));
+				
+				aliens.add(a);
+				
+			}
+		}
+		catch(Exception e){e.printStackTrace();}
+		
+		return aliens;
+		
+		
+	}
 }
+
+
+
+
+
+
+
+
+

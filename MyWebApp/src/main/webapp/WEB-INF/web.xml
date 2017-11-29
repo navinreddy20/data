@@ -3,5 +3,15 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+	<servlet>
+		<servlet-name>GetAllAliens</servlet-name>
+		<display-name>GetAllAliens</display-name>
+		<description></description>
+		<servlet-class>com.telusko.controller.GetAllAliens</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllAliens</servlet-name>
+		<url-pattern>/allAliens</url-pattern>
+	</servlet-mapping>
 	
 </web-app>
