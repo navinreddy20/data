@@ -1,4 +1,4 @@
-<%@page import="com.telusko.model.Alien"%>
+<%@page import="com.telusko.model.Alien" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,12 +9,9 @@
 </head>
 <body>
 
-	<% 
 	
-	
-		Alien a = (Alien)request.getAttribute("alien");
-		out.println(a.toString());
-	%>
+
+	${alien}   Expression Language
 
 </body>
 </html>
