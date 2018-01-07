@@ -1,7 +1,11 @@
 package com.telusko.Demohib;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Laptop 
@@ -10,6 +14,15 @@ public class Laptop
 	private int lid;
 	private String lname;
 	private int price;
+	@ManyToMany(mappedBy="laptops")
+	private List<Alien> aliens = new ArrayList<>();
+	
+	public List<Alien> getAliens() {
+		return aliens;
+	}
+	public void setAliens(List<Alien> aliens) {
+		this.aliens = aliens;
+	}
 	public int getLid() {
 		return lid;
 	}

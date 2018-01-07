@@ -30,14 +30,23 @@ public class App
     	lap1.setLname("Asus");
     	lap1.setPrice(1300);
     	
-    	List<Laptop> laps = new ArrayList<>();
-    	laps.add(lap);
-    	laps.add(lap1);
     	
     	Alien a = new Alien();
     	a.setAid(1);
     	a.setAname("Suman");
-    	a.setLaptops(laps);
+    	a.getLaptops().add(lap1);
+    	a.getLaptops().add(lap);
+    	
+    	Alien a1 = new Alien();
+    	a1.setAid(2);
+    	a1.setAname("Biswa");
+    	a1.getLaptops().add(lap1);
+    	
+    	
+    	lap.getAliens().add(a);
+    	lap1.getAliens().add(a);
+    	lap1.getAliens().add(a1);
+    	
     	
     	
     	
@@ -50,6 +59,7 @@ public class App
     	session.save(lap);
     	session.save(lap1);
     	session.save(a);
+    	session.save(a1);
     	
     	t.commit();
     	System.out.println(a);

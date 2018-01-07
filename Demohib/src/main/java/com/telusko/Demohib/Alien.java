@@ -1,9 +1,10 @@
 package com.telusko.Demohib;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Alien 
@@ -11,8 +12,8 @@ public class Alien
 	@Id
 	private int aid;
 	private String aname;
-	@OneToMany
-	private List<Laptop> laptops;
+	@ManyToMany
+	private List<Laptop> laptops = new ArrayList<>();
 	
 	public int getAid() {
 		return aid;
